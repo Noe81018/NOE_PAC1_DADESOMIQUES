@@ -12,12 +12,16 @@ SE_experiment <- do_query(context = 'study',
 # un SummarizedExperiment. Gràcies al paquet de SummarizeExperiment, ha permès manipular aquest objecte,
 #per poer visualitzar les diferents parts del SummarizedExperiment:
 
-assay(SE_experiment) #Dades experimentales
-colData(SE_experiment) #Metadata de les columnes (corresponents a les mostres de les dades).
-rowData(SE_experiment) #Metadata de las filas (corresponent als diferents metabòlits).
+matriz_metabolitos<-assay(SE_experiment) #Dades experimentales
+rownames(matriz_metabolitos) <- metabolits_info$metabolite_name #cambiem els codis dels metabolits per el nom d'aquests.
+
+mostres_info <- colData(SE_experiment) #Metadata de les columnes (corresponents a les mostres de les dades).
+metabolits_info <- rowData(SE_experiment) #Metadata de las filas (corresponent als diferents metabòlits).
 metadata(SE_experiment) #Metadata del dataset.
 
 save(SE_experiment, file= "/Users/noegragerajimenez/Documents/NOE_PAC1_DADESOMIQUES/SummarizedExperiment.Rda")
+write.table(matriz_metabolitos, file="/Users/noegragerajimenez/Documents/NOE_PAC1_DADESOMIQUES/dades.txt")
+
 
 #Quina són les diferències principals entre SummarizedExperiment i ExpressionSet?
 
@@ -39,4 +43,102 @@ save(SE_experiment, file= "/Users/noegragerajimenez/Documents/NOE_PAC1_DADESOMIQ
 # i per últim, una metadata que descriu els mètodes experimentals i publicacions de referència (metadata).
 
 
-#ESTUDI 
+#ANALISI EXPLORATÒRI:
+#Transfromar la matriz de datos en dataframe:
+matriz <- data.frame(matriz_metabolitos)
+rownames(matriz) <- rownames(matriz_metabolitos) #pongo los nombres de las filas por el nombre del metabólito
+
+
+###### ANALISI Descriptiu #########:
+
+#Miro si té Na's perque poden entorpir l'estudi:
+table(is.null(matriz)) #Mirar valors nuls
+table(is.na(matriz)) #Mirar valors Na
+matriz_neta <- na.omit(matriz) #Eliminar-los
+sum(is.na(matriz_neta)) #Comprobar si hi han vlors Na.
+
+dim(matriz_neta) #eure la dimensió de les dades
+
+str(matriz_neta) #Resum de les característiques/variables de les dades.
+summary(matriz_neta) #Resum estadístic de les diferents miostres
+
+
+#Imprimir els histogrames corresponents a cada mostra (de 15 en 15 ja que no apareixen tots):
+
+  #Imprimir els 15 primers columnes (mostres):
+par(mfrow = c(4,4))
+for(i in 1:15) {  #imprimir els 15 primers
+  hist(matriz_neta[, i], 
+       main = colnames(matriz)[i],
+       xlab= "concentració",
+       ylab = "Freqüències",                 
+       col = "pink")                  
+}
+
+  #Imprimir les 15 últimes columnes (mostres):
+par(mfrow = c(4,4)) #Establir matriu on es colocaran els histogrames
+for(i in 16:30) {   #Imprimir els 15 restants
+  hist(matriz_neta[, i], 
+       main = colnames(matriz)[i], 
+       xlab = "concentració",
+       ylab = "Freqüències",                
+       col = "pink")                    
+}
+
+
+# Visualització amb Boxplot:
+
+boxplot(matriz_neta)
+boxplot(matriz_neta, outline=FALSE) #Treiem els outliers ja que impedeixen veure les caixes.
+
+#Escalem les dades per si no ho estan:
+matriz_neta_norm <- scale(matriz_neta)
+boxplot(matriz_neta_norm) #Visualitzaem en un boxplot
+
+
+
+
+#Com es pot veure, encara que no es vegi del tot bé, la gran majoria de metabòlits en cada mostra té una concentració molt baixa.
+pca <- prcomp(t(matriz_neta), center=TRUE,scale.=TRUE) #S'ha de transpossar les dades, ja que prcomp es necessari que les mostres estiguin en les files.
+summary(pca) 
+
+
+#PCA:
+phenotype <- colData(SE_experiment)$Phenotype
+local_sample_id <- colData(SE_experiment)$local_sample_id
+
+# Asignar colores basados en 'Phenotype'
+colores <- ifelse(phenotype == "Control", "blue", 
+                  ifelse(phenotype == "Lethal chlorpromazine poisoning", "red", "gray"))
+
+loads<- round(pca$sdev^2/sum(pca$sdev^2)*100,1)
+xlab<-c(paste("PC1",loads[1],"%"))
+ylab<-c(paste("PC2",loads[2],"%"))
+plot(pca$x[,1:2],xlab=xlab,ylab=ylab, col=colores , 
+     main ="Principal components (PCA)")
+names2plot<-paste0(substr(names(matriz_neta),1,3), 1:4)
+
+text(pca$x[,1],pca$x[,2],names2plot, pos=3, cex=.6). 
+
+#Al final, nes pot veure un possible observar una tendència d'aguoamwent de les mostres en funció de
+# del envenenament per chloropromazina, segon si es letal, no ho és, o correspon als controls.
+
+#El component principal 1 s'encarrega d'explicar el 22.6% de la variança. Donat que la suma del PC1 i PC2, no arriba al
+#mínim, aquesta pPCA perd molta informació.Com surten les mostres agrupades,
+#podria ser que no hi ha efecte batch.
+
+#Detecció BATCH:
+
+#Esta agrupación tan homogenea podria causado por un efecto batch.
+
+
+boxplot(matriz_neta_norm, col=colores, outline= FALSE) #treiem del boxplot els outliers per veure-ho millor
+
+manDist <- dist(t(matriz_neta_norm))
+heatmap (as.matrix(manDist), col=heat.colors(16))
+require(MASS)
+sam1<-sammon (manDist, trace=FALSE)
+plot(sam1$points, col=colores)
+text(sam1$points,colores, pos=4)
+colData(SE_experiment)$sample_source
+rowData(SE_experiment)
