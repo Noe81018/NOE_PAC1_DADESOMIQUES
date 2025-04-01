@@ -39,3 +39,4 @@ save(SE_experiment, file= "/Users/noegragerajimenez/Documents/NOE_PAC1_DADESOMIQ
 # i per últim, una metadata que descriu els mètodes experimentals i publicacions de referència (metadata).
 
 
+#ESTUDI 
