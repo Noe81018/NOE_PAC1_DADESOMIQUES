@@ -13,11 +13,43 @@ output:
 
 # Objectius
 
-En aquest projecte a'ha pretès realitzar un anàlisi exploratòri amb l'objectiu de poder comprendre en profunditat l'estructura que tenen les dades emprades, ja sigui per entendre com aquestes d'ades estan estructuraed, les seves principals característiques estadístiques (estadístis), i si cal fer un procés de filtratge de dades donaa la presència de valors perduts. A més d'una visualització d'aquestes per poder veue si cal aplicar alguna transformació a les dades.
+En aquest projecte es preten realitzar un anàlisi exploratòri amb l'objectiu de poder comprendre en profunditat l'estructura que tenen les dades emprades, ja sigui per entendre com aquestes d'ades estan estructuraed, les seves principals característiques estadístiques (estadístis), i si cal fer un procés de filtratge de dades donada la presència de valors perduts. A més, d'una visualització d'aquestes per poder veue si cal aplicar alguna transformació a les dades.
 
-Per una altre banda amb l'ús de diverss tècniques com una PCA o un agrupament jeràrquic, poder determinar si les mostres emprades es troben diferenciades unes de les altres donada l'alteració dels metabòlits en el torrent sanguini per culpa de l'enverinament per chloropromizina, d'aquesta manera gracies als agrupaments poder determinar si les mostres es troben d¡ben diferenciades unes de les altres.
+Per una altre banda, amb l'ús de diverses tècniques com una PCA o un agrupament jeràrquic, poder determinar si les mostres emprades es troben diferenciades unes de les altres, donada l'alteració dels metabòlits en el torrent sanguini per culpa de l'enverinament per chloropromizina. D'aquesta manera, gràcies als agrupaments, poder determinar si les mostres es troben ben diferenciades unes de les altres.
 
 # Mètodes
+
+Per aquest estudi, s'han utilitzat dades provinents de **Metabolomics Workbench**, específicament de l'estudi **ST001739** titulat ***"Differential Metabolites and Disturbed Metabolic Pathways Associated with chlorpromazine Poisoning"***.
+
+Els investigadors que han desenvolupat aquest estudi, han emprat i analitzat mostres biològiques de ratolins, els quals sel's hi ha subministrat clorpromazina, un atipsicòtic, en mateixes dosis. D'aquests animals, van extreure mostres sanguínees dels morts per intoxicació per clorpromazine, mostres de ratolins intoxicats però sense morir, i mostres de ratolins no intoxicats, com a control.
+
+Per poder detectar els metabòlits, s'ha combinat la cromatografia líquida d'alt rendiment i l'espectrometria de masses d'alta resolució (UPLC-HRMS), amb la finalitat de poder identrificar els metabòlits diferencials associats amb la intoxicacó letal per cloropromazina (CPZ), i per tant, quines són les víes metabòliques que s'han trobat alterades per aquesta intoxicació.
+
+## Construcció del SummarizedExperiment:
+
+Per poder treballar s'ha hagut de construïr un SummarizedExperiment, una classe que permet guardar informació respecte l'estudi.
+
+Per poder realitzar el SummarizedExperiment, s'ha emprat els paquets ***"SummarizedExperiment"*** i ***"metabolomicsWorkbenchR"***, respectivament per generar la classe i descarregar l'experiment de la plataforma de MetabolomicsWorkbench.
+
+## Descripció i resum numèric univariant:
+
+Per poder treballar amb la matriu de dades i relitzar un anàlisi descriptiu, primer de tot s'ha hagut d'extreure la matriu del SummarizedExperiment, continguda com a assay. Aquesta matriu resultant és practicament amb la que es treballarà al llarg de l'estudi.
+
+Per comprendre l'estructura de les dades s'ha implementat la funció [***str()***], per determinar el tipus de dades amb les que es reballen, com també el tipus de variables que analitzem. Totes elles numèriques.
+
+També, he mirat els si hi ha presència de números perduts (Na's) o números nuls. Aquests, a l'hora de realitzar posteriors processos poden ser molests per l'estudi, i entorpir el procés. Per tant, han sigut eliminades l¡les files amb valsors Na's o nuls.
+
+Finalment, s'ha mirat la dimensió de les dades amb les que es treballa després de la modificació, 325 (metabòlits) \* 30 (mostres). I s'ha realitzat un resum estadístic, per explorar àpidament els estadístics principals de les diferents mostres en funció dels nivels metabòlics en sang.
+
+Un cop realitzada l'exploració, per contrastar els resultats, he construit uns histogràmes, un per cada mostra per veure quina és la distribució de les concentracions metabòliques, i un diagrama de caixes (BoxPlot), que permet veure si escal alguna transformació de les dades.
+
+# PCA i Agrupament Jeràrquic:
+
+Per realiztar aquests dos processos primer de tot s'han normalitzat les dades, per si fos el cas que les dades no estan en la mateixa escala, doncs així que quedin escalades, i treure les diferències sistemàtiques, com és el cas de valors molt alts o baixos de outliers.
+
+A continuació, he formulat l'Analisi de Components Principals (PCA) amb [prcom()], s'ha estipulat els colors segons el fenotip de les mostres (Blau = Control, Vermell = Morts per enverinament, Verd = només intoxicats), així serà més fàcil catalogar les mostres en la PCA, i també s'han etiquetat cada mostra corresponent. 
+
+Pel que fa l'agrupament jeràrquic, ha servit com a contrast amb la PCA, per veure si l'agrupament que aquesta tècnica em generava, era igual a les tendències intrinseques que mostrava la PCA amb les mostres. 
 
 # Resultats
 
