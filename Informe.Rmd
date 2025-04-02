@@ -2,10 +2,18 @@
 title: "Informe"
 author: 'Noé'
 date: "2025-04-02"
-output: pdf_document
+output: 
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
 ---
+
+# Abstract:
+
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
