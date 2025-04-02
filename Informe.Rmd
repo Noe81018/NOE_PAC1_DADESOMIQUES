@@ -162,8 +162,9 @@ En la graficació de la PCA s'ha vist una tendència subyacent de les mostres, o
 ```{r, echo=FALSE}
 phenotype <- colData(SE_experiment)$Phenotype
 # Asignar colores basados en 'Phenotype'
-colores <- ifelse(phenotype == "Control", "blue", 
-                  ifelse(phenotype == "Lethal chlorpromazine poisoning", "red", "green"))
+colors <- c("Control" ="blue", "Lethal chlorpromazine poisoning"="red", 
+             "Non-lethal chlorpromazine poisoning"= "green")
+colores <- colors[phenotype]
 
 percentatge_info<- round(pca$sdev^2/sum(pca$sdev^2)*100, 2) #Percentatge de variança que defineix els components.
 xlab<-c(paste("PC1",percentatge_info[1],"%"))
