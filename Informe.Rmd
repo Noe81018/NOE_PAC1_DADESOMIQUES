@@ -9,10 +9,23 @@ output:
     number_sections: true
 ---
 
-# Abstract:
+# Abstract
 
+# Objectius
 
+En aquest projecte a'ha pretès realitzar un anàlisi exploratòri amb l'objectiu de poder comprendre en profunditat l'estructura que tenen les dades emprades, ja sigui per entendre com aquestes d'ades estan estructuraed, les seves principals característiques estadístiques (estadístis), i si cal fer un procés de filtratge de dades donaa la presència de valors perduts. A més d'una visualització d'aquestes per poder veue si cal aplicar alguna transformació a les dades.
 
+Per una altre banda amb l'ús de diverss tècniques com una PCA o un agrupament jeràrquic, poder determinar si les mostres emprades es troben diferenciades unes de les altres donada l'alteració dels metabòlits en el torrent sanguini per culpa de l'enverinament per chloropromizina, d'aquesta manera gracies als agrupaments poder determinar si les mostres es troben d¡ben diferenciades unes de les altres.
+
+# Mètodes
+
+# Resultats
+
+# Discussió
+
+# Conclusions
+
+# Referències
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
