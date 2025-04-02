@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.17)  2 APR 2025 17:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.17)  2 APR 2025 17:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -516,14 +516,14 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}] [2]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-54.
+55.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 256.
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 257.
 LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line 
-258.
+259.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [3{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
@@ -532,7 +532,7 @@ File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 File: Informe_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-4-1.pdf>
 Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-4-1.pdf  used
- on input line 354.
+ on input line 355.
 (pdftex.def)             Requested size: 438.64435pt x 283.06111pt.
 [4]
 <Informe_files/figure-latex/unnamed-chunk-5-1.pdf, id=60, 408.52625pt x 253.948
@@ -540,7 +540,7 @@ Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-4-1.pdf  used
 File: Informe_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-5-1.pdf>
 Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-5-1.pdf  used
- on input line 364.
+ on input line 365.
 (pdftex.def)             Requested size: 408.53772pt x 253.95586pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
@@ -550,7 +550,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 File: Informe_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-6-1.pdf>
 Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-6-1.pdf  used
- on input line 368.
+ on input line 369.
 (pdftex.def)             Requested size: 436.63019pt x 253.94812pt.
 [5 <./Informe_files/figure-latex/unnamed-chunk-4-1.pdf> <./Informe_files/figure
 -latex/unnamed-chunk-5-1.pdf>]
@@ -559,7 +559,7 @@ Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-6-1.pdf  used
 File: Informe_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-8-1.pdf>
 Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-8-1.pdf  used
- on input line 396.
+ on input line 397.
 (pdftex.def)             Requested size: 436.63019pt x 283.0568pt.
 [6 <./Informe_files/figure-latex/unnamed-chunk-6-1.pdf>]
 <Informe_files/figure-latex/unnamed-chunk-9-1.pdf, id=100, 435.6275pt x 300.121
@@ -567,16 +567,16 @@ Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-8-1.pdf  used
 File: Informe_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-9-1.pdf>
 Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-9-1.pdf  used
- on input line 413.
+ on input line 414.
 (pdftex.def)             Requested size: 435.62643pt x 300.12051pt.
 [7 <./Informe_files/figure-latex/unnamed-chunk-8-1.pdf>] [8 <./Informe_files/fi
 gure-latex/unnamed-chunk-9-1.pdf>]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
-74.
+75.
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-Underfull \hbox (badness 1810) in paragraph at lines 474--476
+Underfull \hbox (badness 1810) in paragraph at lines 475--477
 []\T1/lmr/m/n/10 (+20) Per ac-cedir al codi re-al-itzat en l'estudi, es troba u
 bi-cat en el GitHub, en el doc-u-men
  []
@@ -590,7 +590,7 @@ L3 programming layer <2024-02-20>
 Here is how much of TeX's memory you used:
  14002 strings out of 474116
  220528 string characters out of 5743681
- 1949187 words of memory out of 5000000
+ 1950187 words of memory out of 5000000
  35985 multiletter control sequences out of 15000+600000
  620495 words of font info for 148 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -604,7 +604,7 @@ ublic/lm/lmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lm
 ri10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local
 /texlive/2024/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on Informe.pdf (9 pages, 433045 bytes).
+Output written on Informe.pdf (9 pages, 433310 bytes).
 PDF statistics:
  244 PDF objects out of 1000 (max. 8388607)
  193 compressed objects within 2 object streams
