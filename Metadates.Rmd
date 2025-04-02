@@ -1,0 +1,36 @@
+---
+title: "Metadata"
+author: 'Noé'
+date: "2025-04-02"
+output: pdf_document
+---
+
+# Metadata de les mostres
+
+En aquest metadata, es troben 5 columnes de tipus caràcter, que corresponen a nom de la mostra (local_sample_id), una columna amb el codi de l'estudi que correspon cada mostra (study_id), de quin lloc han extret les mostres, en aquest cas del plasma de la sang (sample_source), el codi que té associat cada mostre en l'anàlisi (mb_sample_id), una columna buida (raw_data), i finalment una variable que conté quin tipus de mostra és, és a dir el fenotip, si és una mostra control, provinent d'enverinament no letal per cloropromizina, o per intxicació letal per cloropromizina.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+#Carregar el SummarizedExperiment:
+load("/Users/noegragerajimenez/Documents/NOE_PAC1_DADESOMIQUES/SummarizedExperiment.Rda")
+
+colData(SE_experiment)
+```
+
+# Metadata dels Metabòlits
+
+Aquest metadata conté totes les característiques respecte els metabòlits de l'assay. Per cada metabòlit repressentat en el assay (ex:ME403907), conté una variable amb el nom complert del metabòlit (metabòlite_name), una variable amb el codi del metabòlit (metabolite_id), que és com surt en el assay (ex: ME403908), i una última columna amb amb el nom refmet (refmet_name).
+
+```{r}
+rowData(SE_experiment)
+```
+
+# Metadata del datset / experiment
+
+Aquest metadata conte una variable d'on provenen les dades ($data_source), una variable amb el codi de l'estudi ($study_id) i de l'anàlisi ($analysis_id), un resum sobre l'anàlisi ($analysis_summary), les unitats en que estan els valors ($units), en aquest cas estan en "Peak area", una variale amb el nom complert de l'estudi i l'anàlisi ($name), la descripció de l'estudi ($description), i la última variable que està buida ($subject_type).
+
+```{r}
+metadata(SE_experiment)
+```
+
