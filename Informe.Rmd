@@ -11,11 +11,18 @@ output:
 
 # Abstract
 
+En aquest estudi es pretèn realitzar un estudi exploratòri de dades metabòliques de l'estudi ***"Differential Metabolites and Disturbed Metabolic Pathways Associated with chlorpromazine Poisoning"*** amb referència **ST001739** en MetabolomicsWorkbench.
+
+Aquest estudi es basa en un analisi descriptiu i dels principals components estadístics que proporcioni una visió general del dataset. On s'ha hagut de realitzar anteriorment, una construcció  de l'objecte que contingui la informació de l'estui: SummarizedExperiment. 
+
+I una posterior implementació de tècniques exploratòries, com PCA i un Agrupament jeràrquic. Ambdues tècniques, han mostrat una tendència de que les diferents mostres de ratolí s'agrupin en diferents grups. Aquest grups estan conformats per els efectes de la intoxicació per cloropromazina, fet que podría indicar una alteració en els perfils metabòlics de manera diferencial, i per tan, una alteració en les vies metabòliques de les diferents mostres analitzades, que defineixin cada cas.
+
+
 # Objectius
 
-En aquest projecte es preten realitzar un anàlisi exploratòri amb l'objectiu de poder comprendre en profunditat l'estructura que tenen les dades emprades, ja sigui per entendre com aquestes d'ades estan estructuraed, les seves principals característiques estadístiques (estadístis), i si cal fer un procés de filtratge de dades donada la presència de valors perduts. A més, d'una visualització d'aquestes per poder veue si cal aplicar alguna transformació a les dades.
+En aquest projecte es pretèn realitzar un anàlisi exploratòri amb l'objectiu de poder comprendre en profunditat l'estructura que tenen les dades emprades, ja sigui per entendre com aquestes dades estan estructurades, les seves principals característiques estadístiques (estadístis), i si cal fer un procés de filtratge de dades donada la presència de valors perduts. A més, d'una visualització d'aquestes per poder veue si cal aplicar alguna transformació a les dades.
 
-Per una altre banda, amb l'ús de diverses tècniques com una PCA o un agrupament jeràrquic, poder determinar si les mostres emprades es troben diferenciades unes de les altres, donada l'alteració dels metabòlits en el torrent sanguini per culpa de l'enverinament per chloropromizina. D'aquesta manera, gràcies als agrupaments, poder determinar si les mostres es troben ben diferenciades unes de les altres.
+Per una altre banda, amb l'ús de diverses tècniques com una PCA o un agrupament jeràrquic, poder determinar si les mostres emprades es troben diferenciades unes de les altres, donada l'alteració dels metabòlits en el torrent sanguini per culpa de l'enverinament per cloropromizina. D'aquesta manera, gràcies als agrupaments, poder determinar si les mostres es troben ben diferenciades unes de les altres.
 
 # Mètodes
 
@@ -25,9 +32,12 @@ Els investigadors que han desenvolupat aquest estudi, han emprat i analitzat mos
 
 Per poder detectar els metabòlits, s'ha combinat la cromatografia líquida d'alt rendiment i l'espectrometria de masses d'alta resolució (UPLC-HRMS), amb la finalitat de poder identrificar els metabòlits diferencials associats amb la intoxicacó letal per cloropromazina (CPZ), i per tant, quines són les víes metabòliques que s'han trobat alterades per aquesta intoxicació.
 
+Per realitzar l'estudii que es pugui entendre bé el que s'ha fet, s'ha separat en 3 etapes, que corresponen als diferents nivells de l'estudi. També s'ha emprat com a guia l'exemple el document: https://aspteaching.github.io/AMVCasos/#ejemplo-pca-1-búsqueda-de-factores-latentes-en-datos-ecológicos1
+
+
 ## Construcció del SummarizedExperiment:
 
-Per poder treballar s'ha hagut de construïr un SummarizedExperiment, una classe que permet guardar informació respecte l'estudi.
+Per poder treballar s'ha hagut de construïr un SummarizedExperiment, una classe que permet guardar dades respecte l'estudi, provinents de tècniques com microarray o RNA-seq, en aquest cas d'espectrometria de masses.
 
 Per poder realitzar el SummarizedExperiment, s'ha emprat els paquets ***"SummarizedExperiment"*** i ***"metabolomicsWorkbenchR"***, respectivament per generar la classe i descarregar l'experiment de la plataforma de MetabolomicsWorkbench.
 
@@ -35,30 +45,191 @@ Per poder realitzar el SummarizedExperiment, s'ha emprat els paquets ***"Summari
 
 Per poder treballar amb la matriu de dades i relitzar un anàlisi descriptiu, primer de tot s'ha hagut d'extreure la matriu del SummarizedExperiment, continguda com a assay. Aquesta matriu resultant és practicament amb la que es treballarà al llarg de l'estudi.
 
-Per comprendre l'estructura de les dades s'ha implementat la funció [***str()***], per determinar el tipus de dades amb les que es reballen, com també el tipus de variables que analitzem. Totes elles numèriques.
+Per comprendre l'estructura de les dades s'ha implementat la funció [***str()***], per determinar el tipus de dades amb les que es treballen, com també el tipus de variables que analitzem. Totes elles numèriques.
 
-També, he mirat els si hi ha presència de números perduts (Na's) o números nuls. Aquests, a l'hora de realitzar posteriors processos poden ser molests per l'estudi, i entorpir el procés. Per tant, han sigut eliminades l¡les files amb valsors Na's o nuls.
+També, he mirat si hi ha presència de números perduts (Na's) o números nuls. Aquests, a l'hora de realitzar posteriors processos poden ser molests per l'estudi, i entorpir el procés. Per tant, han sigut eliminades les files amb valsors Na's o nuls.
 
-Finalment, s'ha mirat la dimensió de les dades amb les que es treballa després de la modificació, 325 (metabòlits) \* 30 (mostres). I s'ha realitzat un resum estadístic, per explorar àpidament els estadístics principals de les diferents mostres en funció dels nivels metabòlics en sang.
+Finalment, s'ha mirat la dimensió de les dades amb les que es treballa després de la modificació, 325 (metabòlits) \* 30 (mostres). I s'ha realitzat un resum estadístic, per explorar ràpidament els estadístics principals de les diferents mostres en funció dels diferents metabòlits en sang.
 
 Un cop realitzada l'exploració, per contrastar els resultats, he construit uns histogràmes, un per cada mostra per veure quina és la distribució de les concentracions metabòliques, i un diagrama de caixes (BoxPlot), que permet veure si escal alguna transformació de les dades.
 
-# PCA i Agrupament Jeràrquic:
+## PCA i Agrupament Jeràrquic:
 
-Per realiztar aquests dos processos primer de tot s'han normalitzat les dades, per si fos el cas que les dades no estan en la mateixa escala, doncs així que quedin escalades, i treure les diferències sistemàtiques, com és el cas de valors molt alts o baixos de outliers.
+Per realiztar aquests dos processos primer de tot s'han normalitzat les dades, per si fós el cas que les dades no estan en la mateixa escala, doncs així que quedin escalades, i treure les diferències sistemàtiques, com és el cas de valors molt alts o baixos de outliers.
 
-A continuació, he formulat l'Analisi de Components Principals (PCA) amb [prcom()], s'ha estipulat els colors segons el fenotip de les mostres (Blau = Control, Vermell = Morts per enverinament, Verd = només intoxicats), així serà més fàcil catalogar les mostres en la PCA, i també s'han etiquetat cada mostra corresponent. 
+A continuació, he formulat l'Analisi de Components Principals (PCA) amb [prcom()], on s'han estipulat els colors segons el fenotip de les mostres (Blau = Control, Vermell = Morts per enverinament, Verd = només intoxicats), així serà més fàcil catalogar les mostres en la PCA, i també s'han etiquetat cada mostra corresponent.
 
-Pel que fa l'agrupament jeràrquic, ha servit com a contrast amb la PCA, per veure si l'agrupament que aquesta tècnica em generava, era igual a les tendències intrinseques que mostrava la PCA amb les mostres. 
+Pel que fa l'agrupament jeràrquic, ha servit com a contrast amb la PCA, per veure si l'agrupament que aquesta tècnica em generava, era igual a les tendències intrinseques que mostrava la PCA amb les mostres.
 
 # Resultats
 
-# Discussió
+## Anàlisi descriptiu i resum numèric univariant:
 
-# Conclusions
-
-# Referències
+Amb les dades que treballem, són les que es mostren a continuació:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(metabolomicsWorkbenchR)
+library(SummarizedExperiment)
 ```
+
+```{r, echo=TRUE, results="hide"}
+#SummarizedExperiment
+library(metabolomicsWorkbenchR)
+library(SummarizedExperiment)
+SE_experiment <- do_query(context = 'study',
+                          input_item = 'study_id',
+                          input_value = 'ST001739',
+                          output_item = 'SummarizedExperiment')
+
+#Generació de taula de dades:
+matriz_metabolitos<-assay(SE_experiment)
+matriz <- data.frame(matriz_metabolitos)
+rownames(matriz) <- rownames(matriz_metabolitos)
+
+```
+
+De la taula de dade creada anomenada "***matriz***", no hi ha cap valor nul, però si que n'hi han valors perduts (Na's), en concret 30 Na's.
+
+```{r, echo=TRUE, results="hide"}
+matriz_neta <- na.omit(matriz) #eliminació Na's
+```
+
+Després d'eliminar-los, estem treballant amb un data.frame (***matriz_neta***) que conté 325 files, que corresponen als diferents metabòlits, i 30 columnes, corresponents a les diferents mostres de ratolí.
+
+Comparant la dimenssió inicial de les dades, on era una taula de 326 files x 30 columnes, s'ha reduït una fila amb l'eliminació de Na's. 
+
+Es pot observar que en les dades inicials, aquests 30 Na's corresponien a un metabòlit en concret, sense medicions. A l'eliminar aquesta fila, 30 Na's, un per columna, la taula resultant de l'estudi ha quedat amb un metabòlit menys (fila).
+
+A més, el data.frame està composat únicament de variables de tipus numèriques, sent 30 variables en total, amb una longitud de 325 valors per variable.
+
+```{r, echo=TRUE, results='show'}
+str(matriz_neta)
+```
+
+Per últim, pel que fa els estadístics de cada variable, tenen una mediana al voltant de 1.5e+07 (varien segons la mostra), on el valor mínim més petit de totes les mostres correspon al de la mostra MCWS3, i el valor màxim més elevat de totes les mostres correspon a la mostra de MCWS1, amb un valor de 1.54e+10. Aquesta gran diferència entre els valor màxims i mínims podría indicar una gran disperssió dels valors, o presència de outliers molt elevats o petits.
+
+Gràcies als histogrames graficats, s'ha vist que la gran majoria dels valors dels metabòlits per mostra, es troben concentrats en valors relativament baixos comparat amb els màxims, establint una distribució desplaçada en el cantó esquerre. A continuació, es mostra un histograma de la mostra FCS1, ja que totes les altres mostres, tenen una representació similar.
+
+```{r, echo=FALSE}
+  hist(matriz_neta[, 1], 
+       main = colnames(matriz_neta)[1],
+       xlab= "concentració",
+       ylab = "Freqüències",
+       breaks = 30,
+       col = "pink")                  
+
+```
+
+\begin{figure}[h] \centering \caption{Histograma de la primera mostra} \end{figure}
+
+Per finalitzar en la graficació, s'han visualitzat amb uns boxplots totes les mostres, on es pot veure un número elevat de outliers que impedeixen visualitzar correctament les mostres. Per això, també s'ha procedit a normalitzar les dades, per evitar que aquests outliers tan elevats puguin arribar a afectar a l'estudi.
+
+
+```{r, echo=FALSE}
+par(mfrow=c(1,2))
+boxplot(matriz_neta, main="Boxplot Complert")
+boxplot(matriz_neta, outline=FALSE, main= "Boxplot sense outliers")
+```
+
+\begin{figure}[h] \centering \caption{BoxPlot després de Normalitzar. Boxplot de l'esquerre complert, i el boxplot de la dreta sense outliers per millorar l'interpretació} \end{figure}
+
+```{r, echo=FALSE}
+
+matriz_neta_norm <- scale(matriz_neta)
+par(mfrow=c(1,2))
+boxplot(matriz_neta_norm, main= "Boxplot dades normalitzades") 
+boxplot(matriz_neta_norm, outline=FALSE, main="Boxplot dades normalitzades sense outliers")
+
+```
+
+\begin{figure}[h] \centering \caption{BoxPlot després de Normalitzar. Boxplot de la esquerre completo, i el boxplot de la dreta sense outliers per millorar l'interpretació} \end{figure}
+
+## PCA i Agrupament Jeràrquic:
+
+Com es pot veure en la PCA, la desviació estàndard és major en el primer component (8.57), mentre que a mida que es van passant als següents components aquesta va decaient (7.70, 6.03, 5.10...). 
+
+A continuació, es mostren les característiques dels 5 primers components principals, encara que en el codi original penjat al github, es pot veure tots els components principals: (https://github.com/Noe81018/NOE_PAC1_DADESOMIQUES/blob/main/Cosi_Exploratori.R).
+
+```{r, echo=FALSE}
+pca <- prcomp(t(matriz_neta), center=TRUE,scale.=TRUE) 
+resum <- summary(pca) 
+head(resum$importance[,1:5])
+```
+
+En la graficació de la PCA s'ha vist una tendència subyacent de les mostres, on aquestes s'agrupen en funció del seu fenotip. És a dir, si aquestes corresponen a mostres control, si després d'intoxicació per antipsicòtic han mort, o si només han quedat intoxicades.
+
+```{r, echo=FALSE}
+phenotype <- colData(SE_experiment)$Phenotype
+# Asignar colores basados en 'Phenotype'
+colores <- ifelse(phenotype == "Control", "blue", 
+                  ifelse(phenotype == "Lethal chlorpromazine poisoning", "red", "green"))
+
+percentatge_info<- round(pca$sdev^2/sum(pca$sdev^2)*100, 2) #Percentatge de variança que defineix els components.
+xlab<-c(paste("PC1",percentatge_info[1],"%"))
+ylab<-c(paste("PC2",percentatge_info[2],"%"))
+plot(pca$x[,1:2],xlab=xlab,ylab=ylab, col=colores , 
+     main ="PCA")
+names<-colnames(matriz_neta) #Extreure els noms de les mostres
+text(pca$x[,1],pca$x[,2], names, pos=3, cex=0.6) #Possar els noms de les mostres en el gràfic
+
+```
+
+
+També es pot observar en la gràfica, que el PC1 explica un 22.63% de la varianza explicada total, mentres que el PC2 un 18.26%. Si sumem els 2 primers components dona un 40.89%, donant indícis que només amb dos components no són suficients per definir gran part de la variança explicada. Podria ser, que donada la complexitat de les variables, no es pugui representar la complexitat només amb dos compponents.
+
+Per donar contrast als resultats obtinguts a la PCA, mitjançant un agrupament jeràrquic, s'ha vist també que les mostres tendeixen a agrupar-se en funció del fenotip d'aquestes. El que podrien indicar que, les concentracions dels metabòlits en les diferents mostres, està relacinat amb el seu fenotip.
+
+```{r, echo=FALSE}
+clust_jerarq <- hclust(dist(t(matriz_neta_norm)), method = "average")
+plot(clust_jerarq)
+rect.hclust(clust_jerarq, k=3, border = c("blue","green","red"))
+legend(x= 18, y= 9.8,
+       legend = c("Control", 
+                  "Lethal chlorpromazine poisoning", 
+                  "Non-lethal chlorpromazine poisoning"), 
+       fill = c("blue", "red", "green"),
+       title = "Fenotip de les mostres") 
+```
+
+# Discussió
+
+En aquest estudi realitzat, s'ha abordat desde una perspectiva una mica "superficial", pel que fa un estudi metabòlic, per tenir una visió general de com les dades treballades es troben estructurades, tant a nivell descriptiu d'aquestes, com pot ser la seva organització, estructura, i els principals trets estadístics, com la visualització d'aquestes per poder veure si escalen algun tipus de transformació necessaria. 
+
+A més, d'implementar tècniques multivariants, com la PCA i un agrupament jeràrquic per poder esbrinar si n'hi han patrons subyacents, gràcies als agrupament de les mostres.  
+
+Uns factors a tenir en compte en aquest estudi, és la falta d'experiència i coneixement, per tant, podría ser que calgués algun tipus de transformació necessaria de les dades, a banda de la normalització, com pot ben ser un logaritme. En principi, no s'ha considerat l'efecte Batch, ja que sembla que les mostres s'han agrupat correctament per el tipus fenotípic d'aquestes, la qual cosa no s'ha fet cap correcció.
+
+Una limitació que també s'ha trobat, és que la PCA perd variança explicada, probablement per la complexitat de les dades, per tant, caldria més components principals per poder explicar més quantitat de variança.
+
+En principi, els resultats obtinguts, han servit per comendre d'una forma clara i entenedora, de com les dades treballades es troben estructurades i que en un principi semblen diferenciar-se unes mostres de les altres.
+
+# Conclusions
+
+Encara que s'ha vist en un principi que les dades semblaven no estar preprocessades, ja que contenien valors perduts, i no estar normalitzades. Gràcies al preprocessament, i a les tècniques de PCA i Agrupament Jeràrquic, s'ha pogut revelar possibles alteracions en els nivells dels metabòlits de les mostres dels diferents ratolins, probablement a causa d'una alteració en les vies metabòliques per cloropromazina, abocant a l'altreació d'unes determinades vies metabòliques o unes altres, depenent si aquests han mort per intoxicació o no, diferenciant els perfils metabòlics en sang de les diferents mostres en tres agrupacions: Control, intoxicat per cloropromazina letal o intoxicació amb cloropromazina no letal. 
+
+Per poder realitzar estudis futurs, es podria fer un estudi en profunditat, de quines podrien ser aquestes rutes metabòliques que es troben altrades, i com s'han alterat, "*upregulated*" o "*downregulated*", per acabar d'entendre l'efecte de la droga en el sistema metabòlic.
+
+# Referències
+
+Per accedir al codi realitzat en l'estudi, es troba ubicat en el GitHub, en el  documen **Cosi_Exploratori.R**:
+
+https://github.com/Noe81018/NOE_PAC1_DADESOMIQUES.git
+
+El material emprat en aquesta PAC ha sigut el seguent:
+
+https://aspteaching.github.io/Analisis_de_datos_omicos-Ejemplo_0-Microarrays/ExploreArrays.html
+
+https://aspteaching.github.io/AMVCasos/#ejemplo-pca-1-búsqueda-de-factores-latentes-en-datos-ecológicos1
+
+https://mixomicsteam.github.io/mixOmics-Vignette/id_03.html
+
+https://www.bioconductor.org/packages/release/bioc/vignettes/metabolomicsWorkbenchR/inst/doc/Introduction_to_metabolomicsWorkbenchR.html
+
+https://www.bioconductor.org/packages/devel/bioc/vignettes/SummarizedExperiment/inst/doc/SummarizedExperiment.html
+
+https://www.bioconductor.org/packages/release/bioc/vignettes/metabolomicsWorkbenchR/inst/doc/example_using_structToolbox.html
+
+https://www.bioconductor.org/packages/release/bioc/vignettes/Biobase/inst/doc/ExpressionSetIntroduction.pdf
+
+https://aspteaching.github.io/AMVCasos/
