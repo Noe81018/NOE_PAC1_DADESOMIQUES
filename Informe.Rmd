@@ -175,6 +175,7 @@ text(pca$x[,1],pca$x[,2], names, pos=3, cex=0.6) #Possar els noms de les mostres
 
 ```
 
+\begin{figure}[h] \centering \caption{PCA a partir de les dades normalitzades} \end{figure}
 
 També es pot observar en la gràfica, que el PC1 explica un 22.63% de la varianza explicada total, mentres que el PC2 un 18.26%. Si sumem els 2 primers components dona un 40.89%, donant indícis que només amb dos components no són suficients per definir gran part de la variança explicada. Podria ser, que donada la complexitat de les variables, no es pugui representar la complexitat només amb dos compponents.
 
@@ -191,6 +192,8 @@ legend(x= 18, y= 9.8,
        fill = c("blue", "red", "green"),
        title = "Fenotip de les mostres") 
 ```
+
+\begin{figure}[h] \centering \caption{Agrupament jeràrquic de les mostres} \end{figure}
 
 # Discussió
 
