@@ -39,7 +39,7 @@ Per realitzar l'estudii que es pugui entendre bé el que s'ha fet, s'ha separat 
 
 Per poder treballar s'ha hagut de construïr un SummarizedExperiment, una classe que permet guardar dades respecte l'estudi, provinents de tècniques com microarray o RNA-seq, en aquest cas d'espectrometria de masses.
 
-Per poder realitzar el SummarizedExperiment, s'ha emprat els paquets ***"SummarizedExperiment"*** i ***"metabolomicsWorkbenchR"***, respectivament per generar la classe i descarregar l'experiment de la plataforma de MetabolomicsWorkbench.
+Per poder realitzar el SummarizedExperiment, s'ha emprat els paquets ***"SummarizedExperiment"*** i ***"metabolomicsWorkbenchR"***, respectivament per generar la classe i descarregar l'experiment de la plataforma de MetabolomicsWorkbench, a partir de la funció [***do_query()***].
 
 ## Descripció i resum numèric univariant:
 
