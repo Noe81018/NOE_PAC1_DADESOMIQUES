@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.17)  2 APR 2025 17:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.10.17)  2 APR 2025 18:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -527,7 +527,7 @@ LaTeX Font Info:    Trying to load font information for TS1+lmtt on input line
 (/usr/local/texlive/2024/texmf-dist/tex/latex/lm/ts1lmtt.fd
 File: ts1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) [3{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
-<Informe_files/figure-latex/unnamed-chunk-4-1.pdf, id=55, 438.63875pt x 283.057
+<Informe_files/figure-latex/unnamed-chunk-4-1.pdf, id=57, 438.63875pt x 283.057
 5pt>
 File: Informe_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-4-1.pdf>
@@ -535,7 +535,7 @@ Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-4-1.pdf  used
  on input line 355.
 (pdftex.def)             Requested size: 438.64435pt x 283.06111pt.
 [4]
-<Informe_files/figure-latex/unnamed-chunk-5-1.pdf, id=60, 408.52625pt x 253.948
+<Informe_files/figure-latex/unnamed-chunk-5-1.pdf, id=62, 408.52625pt x 253.948
 75pt>
 File: Informe_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-5-1.pdf>
@@ -545,7 +545,7 @@ Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-5-1.pdf  used
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<Informe_files/figure-latex/unnamed-chunk-6-1.pdf, id=61, 436.63126pt x 253.948
+<Informe_files/figure-latex/unnamed-chunk-6-1.pdf, id=63, 436.63126pt x 253.948
 75pt>
 File: Informe_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-6-1.pdf>
@@ -554,7 +554,7 @@ Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-6-1.pdf  used
 (pdftex.def)             Requested size: 436.63019pt x 253.94812pt.
 [5 <./Informe_files/figure-latex/unnamed-chunk-4-1.pdf> <./Informe_files/figure
 -latex/unnamed-chunk-5-1.pdf>]
-<Informe_files/figure-latex/unnamed-chunk-8-1.pdf, id=84, 436.63126pt x 283.057
+<Informe_files/figure-latex/unnamed-chunk-8-1.pdf, id=86, 436.63126pt x 283.057
 5pt>
 File: Informe_files/figure-latex/unnamed-chunk-8-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-8-1.pdf>
@@ -562,7 +562,7 @@ Package pdftex.def Info: Informe_files/figure-latex/unnamed-chunk-8-1.pdf  used
  on input line 397.
 (pdftex.def)             Requested size: 436.63019pt x 283.0568pt.
 [6 <./Informe_files/figure-latex/unnamed-chunk-6-1.pdf>]
-<Informe_files/figure-latex/unnamed-chunk-9-1.pdf, id=100, 435.6275pt x 300.121
+<Informe_files/figure-latex/unnamed-chunk-9-1.pdf, id=102, 435.6275pt x 300.121
 25pt>
 File: Informe_files/figure-latex/unnamed-chunk-9-1.pdf Graphic file (type pdf)
 <use Informe_files/figure-latex/unnamed-chunk-9-1.pdf>
@@ -581,20 +581,20 @@ Underfull \hbox (badness 1810) in paragraph at lines 475--477
 bi-cat en el GitHub, en el doc-u-men
  []
 
-[9] (./Informe.aux)
+[9] [10] (./Informe.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 14002 strings out of 474116
- 220528 string characters out of 5743681
- 1950187 words of memory out of 5000000
- 35985 multiletter control sequences out of 15000+600000
- 620495 words of font info for 148 fonts, out of 8000000 for 9000
+ 14010 strings out of 474116
+ 220598 string characters out of 5743681
+ 1953187 words of memory out of 5000000
+ 35987 multiletter control sequences out of 15000+600000
+ 620661 words of font info for 150 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,6n,93p,1004b,636s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,6n,93p,1004b,632s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2024/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
 e/2024/texmf-dist/fonts/type1/public/lm/lmbxi10.pfb></usr/local/texlive/2024/te
@@ -604,10 +604,10 @@ ublic/lm/lmr17.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lm
 ri10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtk10.pfb><
 /usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local
 /texlive/2024/texmf-dist/fonts/type1/public/lm/lmtti10.pfb>
-Output written on Informe.pdf (9 pages, 433301 bytes).
+Output written on Informe.pdf (10 pages, 436389 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
- 28 named destinations out of 1000 (max. 500000)
- 32890 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 254 PDF objects out of 1000 (max. 8388607)
+ 201 compressed objects within 3 object streams
+ 30 named destinations out of 1000 (max. 500000)
+ 32898 words of extra memory for PDF output out of 35830 (max. 10000000)
 
