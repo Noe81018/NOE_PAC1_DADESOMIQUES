@@ -215,11 +215,11 @@ Per poder realitzar estudis futurs, es podria fer un estudi en profunditat, de q
 
 # Referències
 
-Per accedir al codi realitzat en l'estudi, es troba ubicat en el GitHub, en el  documen **Cosi_Exploratori.R**:
+- Per accedir al codi realitzat en l'estudi, es troba ubicat en el GitHub, en el  documen **Cosi_Exploratori.R**:
 
 https://github.com/Noe81018/NOE_PAC1_DADESOMIQUES.git
 
-El material emprat en aquesta PAC ha sigut el seguent:
+- El material emprat en aquesta PAC ha sigut el seguent:
 
 https://aspteaching.github.io/Analisis_de_datos_omicos-Ejemplo_0-Microarrays/ExploreArrays.html
 
