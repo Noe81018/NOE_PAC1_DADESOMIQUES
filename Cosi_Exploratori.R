@@ -105,20 +105,17 @@ summary(pca)
 
 #PCA:
 phenotype <- colData(SE_experiment)$Phenotype
-local_sample_id <- colData(SE_experiment)$local_sample_id
-
 # Asignar colores basados en 'Phenotype'
 colores <- ifelse(phenotype == "Control", "blue", 
-                  ifelse(phenotype == "Lethal chlorpromazine poisoning", "red", "gray"))
+                  ifelse(phenotype == "Lethal chlorpromazine poisoning", "red", "green"))
 
-loads<- round(pca$sdev^2/sum(pca$sdev^2)*100,1)
-xlab<-c(paste("PC1",loads[1],"%"))
-ylab<-c(paste("PC2",loads[2],"%"))
+percentatge_info<- round(pca$sdev^2/sum(pca$sdev^2)*100, 2) #Percentatge de variança que defineix els components.
+xlab<-c(paste("PC1",percentatge_info[1],"%"))
+ylab<-c(paste("PC2",percentatge_info[2],"%"))
 plot(pca$x[,1:2],xlab=xlab,ylab=ylab, col=colores , 
-     main ="Principal components (PCA)")
-names2plot<-paste0(substr(names(matriz_neta),1,3), 1:4)
-
-text(pca$x[,1],pca$x[,2],names2plot, pos=3, cex=.6). 
+     main ="PCA")
+names<-colnames(matriz_neta) #Extreure els noms de les mostres
+text(pca$x[,1],pca$x[,2], names, pos=3, cex=0.6) #Possar els noms de les mostres en el gràfic
 
 #Al final, nes pot veure un possible observar una tendència d'aguoamwent de les mostres en funció de
 # del envenenament per chloropromazina, segon si es letal, no ho és, o correspon als controls.
@@ -127,11 +124,12 @@ text(pca$x[,1],pca$x[,2],names2plot, pos=3, cex=.6).
 #mínim, aquesta pPCA perd molta informació.Com surten les mostres agrupades,
 #podria ser que no hi ha efecte batch.
 
+
 #Detecció BATCH:
 
-#Esta agrupación tan homogenea podria causado por un efecto batch.
 
 
+#####################
 boxplot(matriz_neta_norm, col=colores, outline= FALSE) #treiem del boxplot els outliers per veure-ho millor
 
 manDist <- dist(t(matriz_neta_norm))
@@ -142,3 +140,15 @@ plot(sam1$points, col=colores)
 text(sam1$points,colores, pos=4)
 colData(SE_experiment)$sample_source
 rowData(SE_experiment)
+#################
+
+# AGRUPAMENT JERARQUIC:
+clust_jerarq <- hclust(dist(t(matriz_neta_norm)), method = "average")
+plot(clust_jerarq)
+rect.hclust(clust_jerarq, k=3, border = c("blue","green","red"))
+legend(x= 18, y= 9.8,
+       legend = c("Control", 
+                  "Lethal chlorpromazine poisoning", 
+                  "Non-lethal chlorpromazine poisoning"), 
+       fill = c("blue", "red", "green"),
+       title = "Fenotip de les mostres") 
